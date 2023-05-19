@@ -149,22 +149,37 @@
       var ano = dataAtual.getFullYear();
       var data = cidade + ", " + dia + "/" + mes + "/" + ano;
 
-      // Gerar a declaração
-      var declaracao = "<h1>Auto Declaração de Residência</h1>" +
-        "<p>Eu, " + nome + ", portador(a) do CPF " + cpf + ", declaro para os devidos fins que resido no seguinte endereço:</p>" +
-        "<p>" + rua + ", " + complemento + ", " + numero + ", " + bairro + ", " + cidade + ", " + estado + "</p>" +
-        "<div class='assinatura'>" + nome + "<span id='assinatura'></span></div>" +
-        "<p>" + data + "</p>";
+      // Verificar se todos os campos estão preenchidos
+      if (
+        nome !== "" &&
+        cpf !== "" &&
+        cep !== "" &&
+        rua !== "" &&
+        numero !== "" &&
+        bairro !== "" &&
+        cidade !== "" &&
+        estado !== "" &&
+        document.getElementById("assinatura-checkbox").checked
+      ) {
+        // Gerar a declaração
+        var declaracao = "<h1>Auto Declaração de Residência</h1>" +
+          "<p>Eu, " + nome + ", portador(a) do CPF " + cpf + ", declaro para os devidos fins que resido no seguinte endereço:</p>" +
+          "<p>" + rua + ", " + complemento + ", " + numero + ", " + bairro + ", " + cidade + ", " + estado + "</p>" +
+          "<div class='assinatura'>" + nome + "<span id='assinatura'></span></div>" +
+          "<p>" + data + "</p>";
 
-      // Exibir a declaração na página e ocultar o formulário
-      document.getElementById("resultado").innerHTML = declaracao;
-      document.getElementById("formulario").style.display = "none";
-      document.getElementById("resultado").style.display = "block";
-      document.body.classList.add("gerado");
+        // Exibir a declaração na página e ocultar o formulário
+        document.getElementById("resultado").innerHTML = declaracao;
+        document.getElementById("formulario").style.display = "none";
+        document.getElementById("resultado").style.display = "block";
+        document.body.classList.add("gerado");
 
-      // Alterar valor do botão
-      var botaoGerar = document.getElementById("gerar-declaracao");
-      botaoGerar.value = "Declaração Gerada";
+        // Alterar valor do botão
+        var botaoGerar = document.getElementById("gerar-declaracao");
+        botaoGerar.value = "Declaração Gerada";
+      } else {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+      }
     }
   </script>
 </head>
@@ -213,3 +228,4 @@
   <div id="resultado"></div>
 </body>
 </html>
+	
