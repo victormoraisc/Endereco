@@ -128,8 +128,11 @@
 
     function gerarDeclaracao() {
       // Obter os valores do formulário
-      var nome = document.getElementById("nome").value;
-     
+      var nome = document.getElementById("nome").value.toLowerCase();
+      // Converter a primeira letra de cada palavra em maiúscula
+      nome = nome.replace(/\b\w/g, function(l) {
+      return l.toUpperCase();
+      });
       var cpf = document.getElementById("cpf").value;
       var cep = document.getElementById("cep").value;
       var rua = document.getElementById("rua").value;
